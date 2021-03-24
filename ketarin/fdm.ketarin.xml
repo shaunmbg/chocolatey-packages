@@ -1,0 +1,60 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Jobs>
+  <ApplicationJob xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Guid="3d86013c-62fd-4526-9a13-24aa127131f3">
+    <WebsiteUrl />
+    <UserAgent />
+    <UserNotes />
+    <LastFileSize>33770480</LastFileSize>
+    <LastFileDate>2021-03-20T01:49:22+11:00</LastFileDate>
+    <IgnoreFileInformation>false</IgnoreFileInformation>
+    <DownloadBeta>Default</DownloadBeta>
+    <DownloadDate xsi:nil="true" />
+    <CheckForUpdatesOnly>false</CheckForUpdatesOnly>
+    <VariableChangeIndicator />
+    <HashVariable />
+    <HashType>None</HashType>
+    <CanBeShared>true</CanBeShared>
+    <ShareApplication>false</ShareApplication>
+    <ExclusiveDownload>false</ExclusiveDownload>
+    <HttpReferer />
+    <SetupInstructions>
+      <SetupInstruction xsi:type="StartProcessInstruction">
+        <EnvironmentVariables />
+        <FileName>fdm_x64_setup.exe</FileName>
+        <Parameters />
+        <WaitForExit>true</WaitForExit>
+      </SetupInstruction>
+    </SetupInstructions>
+    <Variables>
+      <item>
+        <key>
+          <string>Version</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>StartEnd</VariableType>
+            <Regex />
+            <Url>https://www.freedownloadmanager.org/download.htm</Url>
+            <StartText>version</StartText>
+            <Name>Version</Name>
+          </UrlVariable>
+        </value>
+      </item>
+    </Variables>
+    <ExecuteCommand>fdm_x64_setup.exe</ExecuteCommand>
+    <ExecutePreCommand />
+    <ExecuteCommandType>Batch</ExecuteCommandType>
+    <ExecutePreCommandType>Batch</ExecutePreCommandType>
+    <Category />
+    <SourceType>FixedUrl</SourceType>
+    <PreviousLocation>C:\tmp\fdm_x64_setup.exe</PreviousLocation>
+    <DeletePreviousFile>true</DeletePreviousFile>
+    <Enabled>true</Enabled>
+    <FileHippoId />
+    <LastUpdated>2021-03-24T13:44:57.5154851+11:00</LastUpdated>
+    <TargetPath>C:\tmp\</TargetPath>
+    <FixedDownloadUrl>https://dn3.freedownloadmanager.org/6/latest/fdm_x64_setup.exe</FixedDownloadUrl>
+    <Name>Free Download Manager</Name>
+  </ApplicationJob>
+</Jobs>
