@@ -5,7 +5,7 @@
     <UserAgent />
     <UserNotes />
     <LastFileSize>33770480</LastFileSize>
-    <LastFileDate>2021-03-20T01:49:22+11:00</LastFileDate>
+    <LastFileDate>2021-03-24T13:44:57.5154851</LastFileDate>
     <IgnoreFileInformation>false</IgnoreFileInformation>
     <DownloadBeta>Default</DownloadBeta>
     <DownloadDate xsi:nil="true" />
@@ -36,7 +36,14 @@
             <VariableType>StartEnd</VariableType>
             <Regex />
             <Url>https://www.freedownloadmanager.org/download.htm</Url>
-            <StartText>version</StartText>
+            <StartText>&lt;div class="download_page_block windows"&gt;
+
+        &lt;h3 class="h3"&gt;Stable release&lt;/h3&gt;
+
+        
+        &lt;span class="version"&gt;
+            FDM </StartText>
+            <EndText> for Windows</EndText>
             <Name>Version</Name>
           </UrlVariable>
         </value>
@@ -48,12 +55,12 @@
     <ExecutePreCommandType>Batch</ExecutePreCommandType>
     <Category />
     <SourceType>FixedUrl</SourceType>
-    <PreviousLocation>C:\tmp\fdm_x64_setup.exe</PreviousLocation>
+    <PreviousLocation>C:\Users\sgerstma\Documents\fdm\fdm_x64_setup.exe</PreviousLocation>
     <DeletePreviousFile>true</DeletePreviousFile>
     <Enabled>true</Enabled>
     <FileHippoId />
-    <LastUpdated>2021-03-24T13:44:57.5154851+11:00</LastUpdated>
-    <TargetPath>C:\tmp\</TargetPath>
+    <LastUpdated>2021-03-24T13:44:57.5154851</LastUpdated>
+    <TargetPath>C:\Users\sgerstma\Documents\fdm\</TargetPath>
     <FixedDownloadUrl>https://dn3.freedownloadmanager.org/6/latest/fdm_x64_setup.exe</FixedDownloadUrl>
     <Name>Free Download Manager</Name>
   </ApplicationJob>
