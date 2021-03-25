@@ -1,8 +1,6 @@
 import-module au
 . $PSScriptRoot\..\_scripts\all.ps1
 
-#$releases = 'https://github.com/universal-ctags/ctags-win32/releases'
-
 function global:au_SearchReplace {
    @{
         ".\tools\chocolateyInstall.ps1" = @{
@@ -23,9 +21,11 @@ function global:au_BeforeUpdate { Get-RemoteFiles -Purge }
 
 function global:au_GetLatest {
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    $download_page = Invoke-WebRequest https://api.github.com/repos/universal-ctags/ctags-win32/releases | ConvertFrom-Json
+    $download_page = Invoke-WebRequest https://www.freedownloadmanager.org/download.htm #| Select-Xml
 
-    $url   = $download_page[0].assets | select browser_download_url | where { $_ -notmatch "debug" -and $_ -match "x86" }
+    #$url   = $download_page[0].assets | select browser_download_url | where { $_ -notmatch "debug" -and $_ -match "x86" }
+	$url   = $download_page[0].assets | Select-xml -XPath //version
+	
     $url64 = $download_page[0].assets | select browser_download_url | where { $_ -notmatch "debug" -and $_ -match "x64" }
 
     $version = $download_page[0].name -split "/" | select -First 1
@@ -37,11 +37,15 @@ function global:au_GetLatest {
     $releasenotes = $download_page[0].body
 
     @{
+		dlpage		 = $download_page
         Version      = $version
         URL32        = $url
         URL64        = $url64
         ReleaseNotes = $releasenotes
     }
 }
+
+#"{0} test output" -f $package.Name, $module.Name, $module.Version
+au_GetLatest
 
 update -ChecksumFor all
