@@ -14,38 +14,41 @@ function global:au_SearchReplace {
         #"$($Latest.PackageName).nuspec" = @{
         #    "(\<releaseNotes\>).*(\</releaseNotes\>)" = "`${1}$($Latest.ReleaseNotes)`$2"
         #}
+
+		
     }
+	
+	#@{
+	#	FileName      = $fileName
+	#	PackageName	  = $packageName
+	#	#Checksum32    = $Checksum32
+	#	#Checksum64    = $Checksum64
+	#}
 }
 
 function global:au_BeforeUpdate { Get-RemoteFiles -Purge }
 
 function global:au_GetLatest {
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    $download_page = Invoke-WebRequest https://www.freedownloadmanager.org/download.htm #| Select-Xml
+    $download_page = Invoke-WebRequest https://www.freedownloadmanager.org/download.htm
 
-    #$url   = $download_page[0].assets | select browser_download_url | where { $_ -notmatch "debug" -and $_ -match "x86" }
-	$url   = $download_page[0].assets | Select-xml -XPath //version
-	
-    $url64 = $download_page[0].assets | select browser_download_url | where { $_ -notmatch "debug" -and $_ -match "x64" }
+	$version = ($download_page.AllElements | Where{$_.class -eq "version"}).innerText | Select-String -Pattern '\d+\.\d+\.\d+' | % { $_.Matches } | % { $_.Value }
 
-    $version = $download_page[0].name -split "/" | select -First 1
-    $version = $version -replace "-", "."
+	$url64   = $download_page.Links | Foreach {$_.href } | Select-String -Pattern 'fdm_x64_setup.exe' | ForEach-Object {$_ -Replace "\/\/", "http://"}
+	$url   = $download_page.Links | Foreach {$_.href } | Select-String -Pattern 'fdm_x86_setup.exe' | ForEach-Object {$_ -Replace "\/\/", "http://"}
 
-    $url = $url.browser_download_url
-    $url64 = $url64.browser_download_url
-
-    $releasenotes = $download_page[0].body
+	#$fileName
 
     @{
-		dlpage		 = $download_page
         Version      = $version
         URL32        = $url
         URL64        = $url64
-        ReleaseNotes = $releasenotes
+		#Checksum	 = $checksum
+		#Checksum64	 = $checksum64
     }
 }
 
 #"{0} test output" -f $package.Name, $module.Name, $module.Version
-au_GetLatest
+#au_GetLatest
 
 update -ChecksumFor all
