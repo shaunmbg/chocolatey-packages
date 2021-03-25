@@ -21,7 +21,7 @@ environment:
   # Github token to commit pushed packages to repository
   github_user_repo:  shaunmbg/free-download-manager 
   github_api_key:
-    secure: 1pWwr52Myk3IPTZGiromzOaM1ekUm5r5jXNHRBmnantimSvbLeXzvf/YDSgTck+O #https://ci.appveyor.com/tools/encrypt
+    secure: RFqEM4C6Bt8ioVQYnvdXCz4NkI5jZ0ByRjeG91LwDOOzfqLyac5Z5/IG+Uv8QWrz #https://ci.appveyor.com/tools/encrypt
 
 
   # Mail credentials - for error notifications
