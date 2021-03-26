@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop';
 $packageArgs = @{
-  packageName   = 'free-download-manager'
-  softwareName  = 'free-download-manager*'
+  packageName   = 'FreeDownloadManager'
+  softwareName  = 'FreeDownloadManager'
   fileType      = 'EXE'
   validExitCodes= @(0, 3010, 1605, 1614, 1641)
   silentArgs   = '/qn /norestart /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
